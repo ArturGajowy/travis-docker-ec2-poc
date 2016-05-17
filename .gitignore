@@ -1,3 +1,8 @@
+### Private keys, duh!
+*.pem
+scripts/docker_keys*
+!scripts/docker_keys.tar.enc
+
 ### Java template
 *.class
 

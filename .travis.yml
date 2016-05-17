@@ -3,6 +3,20 @@ language: java
 jdk:
   - oraclejdk8
 
+services:
+  - docker
+
+before_install:
+  #decrypt docker keys
+  - openssl aes-256-cbc -K $encrypted_326ec7b8657f_key -iv $encrypted_326ec7b8657f_iv -in scripts/docker_keys.tar.enc -out scripts/docker_keys.tar -d
+  #make docker connect to the EC2 host using the decrypted keys by default
+  - tar xvf scripts/docker_keys.tar -C scripts/
+  - mkdir -pv ~/.docker
+  - cp -v scripts/docker_keys/{ca,cert,key}.pem ~/.docker
+  - export DOCKER_HOST=tcp://presto-docker.bounceme.net:2376 DOCKER_TLS_VERIFY=1
+  #run docker remotely in EC2
+  - docker run hello-world
+
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -rf $HOME/.gradle/caches/*/scripts
