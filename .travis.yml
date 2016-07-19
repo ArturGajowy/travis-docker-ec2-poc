@@ -16,6 +16,8 @@ cache:
   - $HOME/.gradle/wrapper/
 
 deploy:
+  on:
+    condition: -v ARTIFACTS_KEY
   provider: s3
   access_key_id: ${ARTIFACTS_KEY}
   secret_access_key:
