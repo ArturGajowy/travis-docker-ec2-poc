@@ -31,7 +31,7 @@ deploy:
   access_key_id: ${DEPLOY_S3_SECRET_KEY_ID}
   secret_access_key: ${DEPLOY_S3_SECRET_KEY}
   bucket: ${DEPLOY_S3_BUCKET}
-  skip_cleanup: true
+#  skip_cleanup: true
   local-dir: /tmp/deploy
   upload-dir: travis_artifacts/${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_NUMBER}/${TRAVIS_JOB_NUMBER}
   acl: public_read
