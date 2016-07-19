@@ -9,8 +9,6 @@ script:
  - mkdir -p build/libs
  - echo "$TRAVIS_JOB_ID $TRAVIS_BUILD_NUMBER $TRAVIS_REPO_SLUG $TRAVIS_JOB_NUMBER $TRAVIS_COMMIT $TRAVIS_PULL_REQUEST" > build/libs/build.txt
  - cat build/libs/build.txt
- - echo "${ARTIFACTS_KEY} oopsie!"
- - echo ${ARTIFACTS_KEY}
 
 before_cache:
 - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -23,17 +21,17 @@ cache:
 
 before_deploy:
   - mkdir /tmp/deploy
+  - ls build/libs
 
 deploy:
   on:
     all_branches: true
-    condition: -v ARTIFACTS_KEY
+    condition: -v DEPLOY_S3_SECRET_KEY_ID
   provider: s3
-  access_key_id: ${ARTIFACTS_KEY}
-  secret_access_key:
-    secure: HVAJRx+ulCtDc85RtKM2OAeFTWtHb07avRHipR/pehDd+8ZlsAxo9FxkFxiO0LUVKZGs/oaG8Io1lmhSLn3eOTUE37VLd+SI+yBv7cqNIyd5HjZMSSCyM0zWgukioMqqoE+s+Wrt9bRaak6q9Zm3DAFFgw3AMmrcGt1NBXDyfA9jTPa+r6MU7ngUVIyOGO1x2KMtRXgiw+t0hyoeFvVoFlUMODranOf+Xr9wp0yUzec2QE+BBnGzF1bpasFvFG1jasQ1kQLtnIt9CpwDe1A8IvS4SJJ0/WUOlusLPf8dCrf9AYt6lmQ41wQNkxNYEcKEJFNOYlPXMz4YiKQOsK5Jpfg37l+iaNheKMHkC9n2DFGkUdajW3Q+F7aX3kFMv/0yxaCOjVHpjaJS24V9tc4AjpH+5ko9pOEOf+voCiG5UVkPmpuD61odTorCBlShXH7KP+Gy6FdtE5BkX8pfEyTSWIoverYBzJbMiLp3mnOMUKSy8p8IQ61Q+0JTJdMa9fBo893qFMkcmY8X7GXW6mDubYGLc2r2IqqNyGsVgE2mi3OShihFwWszoneGZhhzNM0DyGGzTD2xvtH1QMWvHP0Z963vVzUapeEwcQzYee7Of70aB7lDqjX457U0Li33e95Y2NH/9IHX2MYtA97r/sezqAf9ZLjVjw58Wd5VuGklHgs=
-  bucket: ${ARTIFACTS_BUCKET}
+  access_key_id: ${DEPLOY_S3_SECRET_KEY_ID}
+  secret_access_key: ${DEPLOY_S3_SECRET_KEY}
+  bucket: ${DEPLOY_S3_BUCKET}
   skip_cleanup: true
-  local-dir: build/libs
-  upload-dir: travis-uploads-test/${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_NUMBER}/${TRAVIS_JOB_NUMBER}
+  local-dir: /tmp/deploy
+  upload-dir: travis_artifacts/${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_NUMBER}/${TRAVIS_JOB_NUMBER}
   acl: public_read
