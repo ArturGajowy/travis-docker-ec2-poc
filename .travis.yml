@@ -3,7 +3,11 @@ language: java
 jdk:
   - oraclejdk8
 
-install: echo "skip 'gradle assemble' step"
+install:
+- echo "skip 'gradle assemble' step"
+- docker --version
+- docker-compose --version
+
 script: gradle build --continue --parallel
 
 before_cache:
