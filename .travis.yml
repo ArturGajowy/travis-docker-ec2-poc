@@ -7,7 +7,7 @@ install: echo "skip 'gradle assemble' step"
 #script: gradle build --continue --parallel
 script:
  - mkdir -p build/libs
- - echo "$TRAVIS_JOB_ID $TRAVIS_BUILD_NUMBER $TRAVIS_REPO_SLUG $TRAVIS_JOB_NUMBER $TRAVIS_COMMIT $TRAVIS_PULL_REQUEST" > build/libs/build.txt
+ - echo "$TRAVIS_JOB_ID $TRAVIS_BUILD_NUMBER $TRAVIS_REPO_SLUG $TRAVIS_JOB_NUMBER $TRAVIS_COMMIT $TRAVIS_PULL_REQUEST $TRAVIS_BRANCH" > build/libs/build.txt
  - cat build/libs/build.txt
 
 before_cache:
