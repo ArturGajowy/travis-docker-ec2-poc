@@ -8,7 +8,10 @@ services:
 before_install:
 - whoami
 - groups `whoami`
-- sudo chown -R travis:travis /var/lib/docker
+- test -e docker/centos6-java8-oracle.tar && docker load -i docker/centos6-java8-oracle.tar
+- test -e docker/centos6-java8-oracle.tar || ( echo 'FROM teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f' > docker/Dockerfile && \
+  docker build -t teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f docker && docker save teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f > docker/centos6-java8-oracle.tar )
+
 
 install:
 - echo "skip 'gradle assemble' step"
@@ -18,13 +21,8 @@ install:
 script: docker pull teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f
 
 before_cache:
-- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -rf $HOME/.gradle/caches/*/scripts
-
 cache:
   directories:
-   - $HOME/.gradle/caches/
-   - $HOME/.gradle/wrapper/
-   - /var/lib/docker
+   - docker
 
 
