@@ -6,16 +6,13 @@ services:
 - docker
 
 before_install:
-- ( test -e docker/centos6-java8-oracle.tar && docker load -i docker/centos6-java8-oracle.tar ) || true
-- test -e docker/centos6-java8-oracle.tar || ( echo 'FROM teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f' > docker/Dockerfile && time docker build -t teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f docker && time docker save teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f > docker/centos6-java8-oracle.tar )
-
+- ( test -e docker/cdh5-hive.tar && docker load -i docker/cdh5-hive.tar ) || true
+- test -e docker/cdh5-hive.tar || ( echo 'FROM teradatalabs/cdh5-hive:4' > docker/Dockerfile && time docker build -t teradatalabs/cdh5-hive:4 docker && time docker save teradatalabs/cdh5-hive:4 > docker/cdh5-hive.tar )
 
 install:
 - echo "skip 'gradle assemble' step"
-- docker --version
-- docker-compose --version
 
-script: docker pull teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f
+script: docker pull teradatalabs/cdh5-hive:4
 
 cache:
   directories:
