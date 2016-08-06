@@ -10,7 +10,7 @@ install:
 - docker --version
 - docker-compose --version
 
-script: gradle build --continue --parallel
+script: docker pull teradatalabs/cdh5-hive:4
 
 before_cache:
 - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
