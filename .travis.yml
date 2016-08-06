@@ -5,6 +5,11 @@ jdk:
 services:
 - docker
 
+before_install:
+- whoami
+- groups `whoami`
+- sudo chown -R travis:travis /var/lib/docker
+
 install:
 - echo "skip 'gradle assemble' step"
 - docker --version
@@ -20,5 +25,6 @@ cache:
   directories:
    - $HOME/.gradle/caches/
    - $HOME/.gradle/wrapper/
+   - /var/lib/docker
 
 
