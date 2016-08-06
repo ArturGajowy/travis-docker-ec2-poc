@@ -10,7 +10,3 @@ install:
 - docker-compose --version
 
 script: docker pull teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f
-
-cache:
-  directories:
-   - docker
