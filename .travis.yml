@@ -9,8 +9,7 @@ before_install:
 - whoami
 - groups `whoami`
 - ( test -e docker/centos6-java8-oracle.tar && docker load -i docker/centos6-java8-oracle.tar ) || true
-- test -e docker/centos6-java8-oracle.tar || ( echo 'FROM teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f' > docker/Dockerfile && \
-  docker build -t teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f docker && docker save teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f > docker/centos6-java8-oracle.tar )
+- test -e docker/centos6-java8-oracle.tar || ( echo 'FROM teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f' > docker/Dockerfile && docker build -t teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f docker && docker save teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f > docker/centos6-java8-oracle.tar )
 
 
 install:
@@ -20,7 +19,6 @@ install:
 
 script: docker pull teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f
 
-before_cache:
 cache:
   directories:
    - docker
