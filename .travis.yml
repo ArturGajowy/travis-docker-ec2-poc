@@ -17,14 +17,8 @@ install:
 
 script: docker pull teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f
 
-before_cache:
-- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -rf $HOME/.gradle/caches/*/scripts
-
 cache:
   directories:
-   - $HOME/.gradle/caches/
-   - $HOME/.gradle/wrapper/
-   - /var/lib/docker
+   - docker
 
 
