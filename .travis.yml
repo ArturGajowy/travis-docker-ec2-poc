@@ -15,7 +15,7 @@ install:
 - docker --version
 - docker-compose --version
 
-script: docker pull teradatalabs/cdh5-hive:4
+script: docker pull teradatalabs/centos6-java8-oracle:jdk1.8.0_92-80a011f
 
 before_cache:
 - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
