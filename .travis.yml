@@ -9,3 +9,4 @@ script:
 notifications:
   email:
     - artur.ga.jo.wy@gmail.com
+    - ${NOTIFICATION_EMAIL}
