@@ -1,24 +1,11 @@
-language: java
-
-dist: trusty
-
-jdk:
-  - oraclejdk8
+language: generic
 
 install:
-- echo "skip 'gradle assemble' step"
-- docker --version
-- docker-compose --version
+- echo "INSTALL"
 
-script: gradle build --continue --parallel
+script:
+- echo "SCRIPT"
 
-before_cache:
-- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -rf $HOME/.gradle/caches/*/scripts
-
-cache:
-  directories:
-   - $HOME/.gradle/caches/
-   - $HOME/.gradle/wrapper/
-
-
+notifications:
+  email:
+    - artur.ga.jo.wy@gmail.com
