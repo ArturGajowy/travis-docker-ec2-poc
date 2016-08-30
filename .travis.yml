@@ -5,5 +5,6 @@ install:
 
 script:
 - echo 'It works on Travis!' > /tmp/mail.txt
-- mail -s "Hello World" artur.gajowy@teradata.com < /tmp/mail.txt
+- sudo apt-get install mailutils
+- mail -v -s "Hello World" artur.gajowy@teradata.com < /tmp/mail.txt
 - echo "SCRIPT"
