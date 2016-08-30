@@ -1,0 +1,7 @@
+language: generic
+
+install:
+- echo "INSTALL"
+
+script:
+- echo "SCRIPT"
