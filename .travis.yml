@@ -4,4 +4,6 @@ install:
 - echo "INSTALL"
 
 script:
+- echo 'It works on Travis!' > /tmp/mail.txt
+- mail -s "Hello World" artur.gajowy@teradata.com < /tmp/mail.txt
 - echo "SCRIPT"
