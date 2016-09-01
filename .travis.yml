@@ -6,6 +6,7 @@ jdk:
   - oraclejdk8
 
 install:
+- exit 1
 - echo "skip 'gradle assemble' step"
 - docker --version
 - docker-compose --version
