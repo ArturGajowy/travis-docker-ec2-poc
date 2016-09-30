@@ -1,1 +1,3 @@
 language: generic
+
+isntall: echo 'Install'
