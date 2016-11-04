@@ -1,7 +1,15 @@
 language: generic
 
+env:
+  global:
+  - LOL=42
+  matrix:
+  - FOO=1
+  - FOO=2 BAR=3
+  - BAZ=4 FOO=5
+
 install:
-- echo "INSTALL"
+- env
 
 script:
-- echo "SCRIPT"
+- env | egrep 'FOO|BAR|BAZ|LOL'
