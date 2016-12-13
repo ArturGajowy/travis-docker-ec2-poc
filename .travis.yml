@@ -3,5 +3,8 @@ language: generic
 script: 
  - ls -lah /tmp
  - ls -lah /var/log
- 
+ - sudo apt-get install tree
+ - find / -name '*.log'
+ - tree .
+ - tree /
  
