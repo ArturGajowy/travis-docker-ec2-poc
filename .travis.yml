@@ -1,1 +1,7 @@
 language: generic
+
+script: 
+ - ls -lah /tmp
+ - ls -lah /var/log
+ 
+ 
