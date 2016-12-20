@@ -1,5 +1,7 @@
 language: generic
 
+group: deprecated
+
 script: 
 -|
   for i in $( seq 1 10 ); do dd if=/dev/random of=/dev/null bs=16384 count=1000; done
