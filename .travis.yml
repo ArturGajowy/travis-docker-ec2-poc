@@ -1,8 +1,8 @@
 language: generic
 
 env:
-  FOO=bar-{baz,pif,paf}
-  FOO=`ls .`
+  - FOO=bar-{baz,pif,paf}
+  - FOO=`ls .`
   
 script:
   - echo "Foo: $FOO "
