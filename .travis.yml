@@ -1,7 +1,7 @@
 language: generic
 
 env:
-  - FOO=( echo bar-{baz,pif,paf} )
+  - FOO=$( echo bar-{baz,pif,paf} )
   - FOO=$( seq 1 4 )
   
 script:
