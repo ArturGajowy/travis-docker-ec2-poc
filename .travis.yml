@@ -5,5 +5,7 @@ env:
   - FOO=`ls .`
   
 script:
-  - echo "Foo: $FOO "
-  - echo "Foo: ${FOO[@]}"
+  - |
+    echo "Foo: $FOO "
+  - |
+    echo "Foo: ${FOO[@]}"
