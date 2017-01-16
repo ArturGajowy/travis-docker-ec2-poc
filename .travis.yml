@@ -1,1 +1,9 @@
 language: generic
+
+env:
+  FOO=bar-{baz,pif,paf}
+  FOO=`ls .`
+  
+script:
+  echo "Foo: $FOO "
+  echo "Foo: ${FOO[@]}"
